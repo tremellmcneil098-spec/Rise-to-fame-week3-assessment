@@ -2,6 +2,8 @@ const scenes = Array.from(document.querySelectorAll(".scene"));
 const previousButton = document.querySelector("#previous-scene");
 const nextButton = document.querySelector("#next-scene");
 const status = document.querySelector("#scene-status");
+const buttons = document.querySelectorAll("button");
+const allButtons = document.querySelectorAll("button");
 let currentScene = 0;
 
 function showScene(index) {
@@ -21,3 +23,46 @@ function showScene(index) {
 previousButton.addEventListener("click", () => showScene(currentScene - 1));
 nextButton.addEventListener("click", () => showScene(currentScene + 1));
 showScene(0);
+
+buttons.forEach(button => {
+    if (button.textContent.toLowerCase().includes("next")) {
+        button.addEventListener("click", () => {
+
+            document.body.classList.remove("scene-jump");
+
+            // Restart the animation
+            void document.body.offsetWidth;
+
+            document.body.classList.add("scene-jump");
+
+            setTimeout(() => {
+                document.body.classList.remove("scene-jump");
+            }, 500);
+        });
+    }
+});
+allButtons.forEach(button => {
+
+    const buttonText = button.textContent.toLowerCase();
+
+    // Previous button
+    if (
+        buttonText.includes("previous") ||
+        buttonText.includes("back")
+    ) {
+        button.addEventListener("click", () => {
+
+            document.body.classList.remove("scene-back");
+
+            // Restart animation
+            void document.body.offsetWidth;
+
+            document.body.classList.add("scene-back");
+
+            setTimeout(() => {
+                document.body.classList.remove("scene-back");
+            }, 550);
+        });
+    }
+
+});
