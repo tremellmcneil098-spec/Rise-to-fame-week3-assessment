@@ -45,7 +45,7 @@ allButtons.forEach(button => {
 
     const buttonText = button.textContent.toLowerCase();
 
-    // Previous button
+    
     if (
         buttonText.includes("previous") ||
         buttonText.includes("back")
@@ -54,7 +54,7 @@ allButtons.forEach(button => {
 
             document.body.classList.remove("scene-back");
 
-            // Restart animation
+            
             void document.body.offsetWidth;
 
             document.body.classList.add("scene-back");
